@@ -8,24 +8,22 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
-public class TodoUpdateRequestDto {
+public class TodoResponseDto {
+
+    private final Long id;
 
     private final String title;
 
     private final String todo;
 
+    private LocalDateTime creation;
 
     @Builder
-    public TodoUpdateRequestDto(Todo todo){
+    public TodoResponseDto (Todo todo){
+        this.id = todo.getId();
         this.title = todo.getTitle();
         this.todo = todo.getTodo();
-    }
-
-    public Todo toEntity(){
-        return Todo.builder()
-                .title(title)
-                .todo(todo)
-                .build();
+        this.creation = todo.getCreation();
     }
 
 }
