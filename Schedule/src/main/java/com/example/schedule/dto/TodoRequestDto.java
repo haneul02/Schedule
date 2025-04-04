@@ -8,17 +8,17 @@ public class TodoRequestDto {
 
     private final String title;
 
-    private final String todo;
+    private final String schedule;
 
-    public TodoRequestDto(String title, String todo){
+    public TodoRequestDto(String title, String schedule){
         this.title = title;
-        this.todo = todo;
+        this.schedule = schedule;
     }
 
     public Todo toEntity(){
         return Todo.builder()
                 .title(title)
-                .todo(todo)
+                .schedule(schedule)
                 .build();
     }
 }

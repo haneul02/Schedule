@@ -1,30 +1,29 @@
 package com.example.schedule.dto;
 
 import com.example.schedule.entity.Todo;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
+@Builder
 public class TodoUpdateRequestDto {
 
     private final String title;
 
-    private final String todo;
+    private final String schedule;
 
-
-    @Builder
     public TodoUpdateRequestDto(Todo todo){
         this.title = todo.getTitle();
-        this.todo = todo.getTodo();
+        this.schedule = todo.getSchedule();
     }
 
     public Todo toEntity(){
         return Todo.builder()
                 .title(title)
-                .todo(todo)
+                .schedule(schedule)
                 .build();
     }
 

@@ -25,23 +25,35 @@ public class Todo {
     @Column(name = "title", nullable = false) // title은 null이 될 수 없음
     private String title; // 할 일 제목
 
-    @Column(name = "todo", nullable = false) // todo는 null이 될 수 없음
-    private String todo; // 할 일 내용
+    @Column(name = "schedule", nullable = false) // schedule는 null이 될 수 없음
+    private String schedule; // 할 일 내용
 
     @CreatedDate// 처음 생성될 때 자동으로 날짜 저장
-    @Column(name = "creation", updatable = false) // 생성일자가 수정되지 않게
-    private LocalDateTime creation; // 할 일이 생성된 날짜/시간
+    @Column(name = "writing", updatable = false) // 생성일자가 수정되지 않게
+    private LocalDateTime writing; // 할 일이 생성된 날짜/시간
 
     @LastModifiedDate // 수정될 때 자동으로 날짜 갱신
-    @Column(name = "update")
-    private LocalDateTime update; // 할 일이 마지막으로 수정된 날짜/시간
+    @Column(name = "creation")
+    private LocalDateTime creation; // 할 일이 마지막으로 수정된 날짜/시간
 
     @Builder
-    public Todo(Long id, String title, String todo, LocalDateTime creation, LocalDateTime update){
-        this.id = id;
+    public Todo(Long userid, String title, String schedule, LocalDateTime writing, LocalDateTime creation){
         this.title = title;
-        this.todo = todo;
+        this.schedule = schedule;
+        this.writing = LocalDateTime.now();
         this.creation = LocalDateTime.now();
-        this.update = LocalDateTime.now();
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private User user;
+
+    public void update(String title, String schedule){
+        this.title = title;
+        this.schedule = schedule;
+    }
+
+    public void updateTitle(String title){
+        this.title = title;
     }
 }

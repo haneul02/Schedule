@@ -13,15 +13,15 @@ public class TodoUpdateResponseDto {
 
     private final String title;
 
-    private final String todo;
+    private final String schedule;
 
-    private LocalDateTime update;
+    private LocalDateTime creation;
 
     @Builder
     public TodoUpdateResponseDto (Todo todo){
         this.id = todo.getId();
         this.title = todo.getTitle();
-        this.todo = todo.getTodo();
-        this.update = todo.getUpdate();
+        this.schedule = todo.getSchedule();
+        this.creation = todo.getCreation();
     }
 }

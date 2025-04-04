@@ -3,7 +3,6 @@ package com.example.schedule.dto;
 import com.example.schedule.entity.Todo;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -14,16 +13,16 @@ public class TodoResponseDto {
 
     private final String title;
 
-    private final String todo;
+    private final String schedule;
 
-    private LocalDateTime creation;
+    private LocalDateTime writing;
 
     @Builder
     public TodoResponseDto (Todo todo){
         this.id = todo.getId();
         this.title = todo.getTitle();
-        this.todo = todo.getTodo();
-        this.creation = todo.getCreation();
+        this.schedule = todo.getSchedule();
+        this.writing = todo.getWriting();
     }
 
 }
